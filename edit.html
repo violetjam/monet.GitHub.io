@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>编辑</title>
+    <link rel="stylesheet" href="css/public.css">
+    <link rel="stylesheet" href="css/edit.css">
+    <link rel="stylesheet" href="css/media.css">
+    <link rel="stylesheet" href="css/font/iconfont.css">
+    <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+</head>
+<body>
+    
+    <div class="bg">
+        <div class="nav_l">
+            <div class="logo"><a href="index.html"><img src="css/img/logo.png" alt=""></a></div>
+            <div class="nav_list">              
+                <ul>
+                    <li class="list"><a href="biography.html">个人传记</a></li>
+                    <li class="list"><a href="paint.html">画作</a> </li>
+                    <li class="list"><a href="">新闻</a> </li>
+                    <li class="list"><a href="">相关视频</a> </li>
+                </ul>
+            </div>
+            <div class="share">
+                <ul class="ClearFixed">
+                    <a href=""><li class="icon-qq"></li></a>
+                    <a href=""><li class="icon-gongzhonghao"></li></a>
+                    <a href=""><li class="icon-weibo"></li></a>
+                    <a class="last" href=""><li class="icon-github"></li></a>
+                </ul>
+            </div>
+            <div class="player">
+                <a class="player_btn"><i class="icon-play"></i></a>
+                <span>正在播放：.......</span>
+            </div>
+        </div>
+        <div class="content">
+            <div class="nav_content">
+                <div class="nav_top ClearFixed">
+                    <div class="nav_content_list ">
+                        <ul>
+                            <li class="return"><a href="index.html"><svg t="1605249029885" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2853" width="16" height="16"><path d="M351.6 512.1L755 108.6c4.4-4.4 1.2-15-7.3-23.4L733 70.5c-8.4-8.4-19-11.7-23.4-7.3L269 503.8c-1.8 1.8-2.3 4.8-1.7 8.1-0.7 3.4-0.2 6.4 1.7 8.2l440.7 440.7c4.4 4.4 14.9 1.2 23.4-7.2l14.7-14.7c8.4-8.4 11.7-18.9 7.2-23.4L351.6 512.1z" fill="#ffffff" p-id="2854"></path></svg></a></li>
+                            <li><em>编辑</em></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="main">
+                <form action="" method="post">
+                    <div class="alert" id="alert" style="color:red"></div>
+                        <ul>
+                            <li>
+                                <ul id="info">
+                                    <li><div class="upload-wrap">
+                                        <input class="file-ele" type="file" id="file" onchange="picShow(this)" accept="image/jpg,image/jpeg,image/png,image/PNG" file-model="image" name="image" nv-file-select uploader="uploader" multiple />
+                                        <div class="file-open">上传图片</div>    
+                                        </div>
+                                        <img src="#" alt="" id="img">
+                                    </li>
+                                    <li><span name="infoName">图片尺寸：</span> <input type="number" step="0.1" class="text" name="text" placeholder="宽，最多保留一位小数"> x <input type="number" name="text" placeholder="高，最多保留一位小数" step="0.1" class="text"> 像素</li>
+                                    <li><span name="infoName">作品名称：</span> <input type="text" class="text" name="name"></li>
+                                    <li><span name="infoName">创作年代：</span> <input type="text" class="text" name="text"></li>
+                                    <li><span name="infoName">分类： </span>     <input type="text" class="text" name="text"></li>
+                                    <li><span name="infoName">现位于：  </span>  <input type="text" class="text" name="text"></li>
+                                    <li><span name="infoName">实际尺寸： </span> <input type="number" class="text" name="text" step="0.1"> x <input type="number" class="text" name="text" step="0.1"> m</li>
+                                    <li><span name="infoName">版权信息： </span> <input type="text" class="text" name="text" value="public domain"></li>
+                                </ul>
+                                <a href="#" id="add" onclick="addInfo()">增加其他</a><br><br>
+                            </li>
+                            <li><span name="infoName">描述： </span> <textarea name="" class="textarea text" name="text"></textarea></li>
+                            <li><input type="reset" class="reset"><input type="button" value="提交" class="submit" onclick="editCheck();"></li>
+                        </ul>
+                        
+                </form>
+                <script type="text/javascript">
+                        function addInfo(){
+                        $("#info").append("<li><span name='infoName' style='margin-right:30px' onclick='edit(this);'>信息名称</span><span style='margin-right:30px' onclick='edit(this);'>信息</span><a href='#' id='delete' onclick='deleteInfo(this);'>删除</a> </li>");    
+                    };
+                    function edit(o){
+                        var alert=$('#alert').text();
+                        if(alert!="字段不得为空"){
+                            $(o).replaceWith("<input type='text' class='current' onblur='update(event);'>");
+                            $("input.current").focus();
+                        }
+                    }
+                    function update(event){
+                        var o=event.target;
+                        var elem=$(o);
+                        var temp=elem.val();
+                        var alert='';
+                        if(temp&&temp!=""){
+                            elem.replaceWith("<span style='margin-right:30px' onclick='edit(this);'>"+temp+"</span>");
+                        }else{
+                            elem.focus();
+                            alert='字段不得为空';
+                        }
+                        $('.alert').text(alert);
+                    }
+                    function deleteInfo(o){
+                        $(o).parent().remove();
+                    }
+                </script>
+                <script type="text/javascript">
+                    function picShow(){
+                        var reads=new FileReader();
+                        f=document.getElementById('file').files[0];
+                        reads.readAsDataURL(f);
+                        reads.onload=function(e){
+                            document.getElementById('img').src=this.result;
+                        };
+                    }
+                </script>
+                <script type="text/javascript">
+                    function editCheck(){
+                        var name=document.getElementById("name");
+                        var width=document.getElementById("width");
+                        var height=document.getElementById("height");
+                        var img=document.getElementById("img").getAttribute('src');
+                        var i;
+                        if(img=='#'){
+                            document.getElementById("alert").innerHTML="请上传图片";
+                            return false;
+                        }
+                        if(width==null||height==null){
+                            document.getElementById("alert").innerHTML="请设置图片大小";
+                            return false;
+                        }
+                        if(name==null){
+                            document.getElementById("alert").innerHTML="请输入作品名称";
+                            return false;
+                        }
+                        return true;
+                    }
+                </script>
+            </div>
+        </div>
+        <div class="footer">本站资源均来自互联网，若有侵权，请留言给站长处理。</div>
+    </div>
+</body>
+</html>

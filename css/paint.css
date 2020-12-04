@@ -1,0 +1,133 @@
+.nav_list .paint_text em{
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    width: 102px;
+    height: 28px;
+    line-height: 28px;
+    background-color:#DAD3C7;
+    color:#4F6357;
+    opacity: 90%;
+}
+
+.content{
+    margin-left: 240px;
+    height: 900px;
+}
+.nav_content{
+    width: 960px;
+    height: 50px;
+    position: fixed;
+    left: auto;
+    top: 0;
+    z-index: 20;
+}
+.nav_top{
+    background-color:#63786B;
+    opacity: 85%;
+    width: 954px;
+    height: 50px;
+    float: left;
+    margin-left: 6px;
+}
+.nav_content_list {
+    float: left;
+    width: 350px;
+    height: 50px;
+    margin-left: 320px;
+    line-height: 50px;
+    padding-left: 70px;
+}
+.return{
+    display: none;
+}
+.nav_content_list li{
+    float: left;
+    margin-right: 70px;
+}
+.nav_content_list em{
+    color: white;
+    font-family: 'webfont';
+}
+.edit img{
+    margin-top: 5px;
+    margin-right: 8px;
+    float: right;
+    width: 40px;
+}
+.main{
+    width: 930px;
+    border: 2px solid #C6BEB2;
+    float: left;
+    background-color:rgba(198, 190, 178,86%) ;
+    margin-top: 54px;
+    margin-left: 6px;
+    padding: 10px;
+    min-height: 600px;
+}
+.cardContainer{
+    display: flex;
+    flex-direction: row;
+    width: 910px;
+}
+.cardColumn{
+    flex-direction: column;
+    width: calc((100% - 60px) / 3 );
+    margin: 10px;
+}
+.card{
+    background-color: rgba(255, 255, 255, 10%);
+    margin: 10px;
+    width: calc(850px/3 );
+}
+.card img{
+    width: 100%;
+}
+.card .info{
+    padding: 16px 10px;
+}
+.footer{
+    width: fit-content;
+    height: 50px;
+    line-height: 50px;
+    margin-top: auto;
+    margin: auto;
+    color:#999;
+    font-size: 14px;
+}
+
+@media only screen and (max-width:500px){
+    .nav_content_list {
+        height: 50px;
+        line-height: 50px;
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
+        padding-left: 0px;
+    }
+    .nav_content_list li{
+        margin-left: 10px;
+        margin-right:70px;
+    }
+    .nav_content_list li:first-child{
+        margin-left: 10px;
+        display: inline;
+    }
+    .return{
+        margin-right: 100px;
+    }
+    .cardContainer{
+        flex-direction: column;
+        width: 100%;
+    }
+    .cardColumn{
+        flex-direction: row;
+        width: calc(100% - 4% );
+        margin: 4px;
+    }
+    .card{
+        margin: 4px;
+        width: 100%;;
+    }
+}
+    
